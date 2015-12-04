@@ -145,7 +145,10 @@ define(["config/common/modules"], function (module) {
                     var config = self.commonColModel[index];
                     if (config.sortable) {
                         $(this).on("click", function (ev) {
-                            self.sortname = config.name;
+
+                           // 排序要本地排序
+
+                           /* self.sortname = config.name;
                             arguments.callee["flag" + config.name] = !arguments.callee["flag" + config.name];
                             if (arguments.callee["flag" + config.name]) {
                                 self.softorder = "desc";
@@ -157,7 +160,11 @@ define(["config/common/modules"], function (module) {
                                 page: self.element.find("tfoot input.page").val(),
                                 sidx: self.sortname,
                                 sord: self.softorder
-                            });
+                            });*/
+
+
+
+
                         });
                     }
                 });
