@@ -53,7 +53,7 @@ define(["config/common/modules"], function (modules) {
         }
     });
 
-/*    modules.directive("setTable", ["gridService", function (gridService) {
+   modules.directive("setTable", ["gridService", function (gridService) {
         return {
             restrict: "A",
             replace: false,
@@ -68,7 +68,7 @@ define(["config/common/modules"], function (modules) {
             }
 
         }
-    }]);*/
+    }]);
 
 });
 
