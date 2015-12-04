@@ -1,0 +1,99 @@
+<div class="viewFramework-topbar">
+    <div class="aliyun-console-topbar">
+        <div class="topbar-wrap topbar-clearfix">
+            <div class="topbar-head topbar-left">
+                <a class="topbar-logo topbar-left" ng-click="toolBarLogo()">
+                    <span class="glyphicon glyphicon-th-large"></span>
+                </a>
+                <a class="topbar-home-link topbar-btn topbar-left">
+                    恒昌技术共享服务中心
+                </a>
+            </div>
+            <div class="topbar-info topbar-right">
+                <div class="topbar-left">
+                    <span class="topbar-info-gap"></span>
+                    <div class="dropdown topbar-info-item">
+                        <a class="dropdown-toggle topbar-btn" data-toggle="dropdown">
+                            <span></span><span class="icon-arrow-down"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="viewFramework-body viewFramework-sidebar-full">
+    <div class="viewFramework-sidebar">
+        <div class="sidebar-content">
+
+            <div class="sidebar-inner">
+                <div style="color:white; text-align:center; height:30px; line-height:30px;font-size:15px;margin-left: -50px;">
+                    统一认证中心
+                </div>
+
+                <div class="sidebar-nav main-nav">
+
+                    <div class="sidebar-title">
+                        <div class="sidebar-title-inner">
+                            <span class="glyphicon glyphicon-triangle-bottom sidebar-title-icon"></span>
+                            <span class="sidebar-title-text">客户管理</span>
+                        </div>
+                    </div>
+                    <ul class="sidebar-trans">
+                        <li class="nav-item">
+                            <a href="javascript;" ui-sref="home.addCutomer">
+                                <div class="nav-icon">
+                                    <span class="glyphicon glyphicon-dashboard sidebar-title-icon"></span>
+                                </div>
+                                <span class="nav-title">添加客户</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript;" ui-sref="home.searchCutomer">
+                                <div class="nav-icon">
+                                    <span class="glyphicon glyphicon-dashboard sidebar-title-icon"></span>
+                                </div>
+                                <span class="nav-title">查询客户</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="sidebar-title">
+                        <div class="sidebar-title-inner">
+                            <span class="glyphicon glyphicon-triangle-bottom sidebar-title-icon"></span>
+                            <span class="sidebar-title-text">服务管理</span>
+                        </div>
+                    </div>
+                    <ul class="sidebar-trans">
+                        <li class="nav-item">
+                            <a href="javascript;" ui-sref="home.addServicer">
+                                <div class="nav-icon">
+                                    <span class="glyphicon glyphicon-dashboard sidebar-title-icon"></span>
+                                </div>
+                                <span class="nav-title">添加服务</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript;" ui-sref="home.searchServicer">
+                                <div class="nav-icon">
+                                    <span class="glyphicon glyphicon-dashboard sidebar-title-icon"></span>
+                                </div>
+                                <span class="nav-title">查询服务</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="viewFramework-product">
+        <div class="viewFramework-product-body">
+            <div class="home-container">
+                <div ui-view></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div style="height:10px; width:100%;"></div>
+    </div>
+</div>

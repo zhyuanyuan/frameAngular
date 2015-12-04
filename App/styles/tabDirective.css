@@ -1,0 +1,9 @@
+.tabChange div {
+    width: 200px;
+    height: 200px;
+    border: 1px red solid;
+    display: none;
+}
+.tabChange button.active{
+    background: red;
+}

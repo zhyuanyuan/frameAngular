@@ -1,0 +1,74 @@
+<style type="text/css">
+    .Login .img {
+        height: 462px;
+        background-image: url('./images/logininfo.png');
+        background-repeat: no-repeat;
+        border: solid 1px #d8d8d8;
+    }
+
+    .Login .well {
+        height: 462px;
+    }
+</style>
+<div class="Login">
+    <div class="container">
+        <!-- /container -->
+        <div class="row">
+            <div class="col-xs-12 hidden-xs" style="margin-top:120px;"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 hidden-xs">
+                <div class="img"></div>
+            </div>
+            <div class="col-sm-4 well">
+                <div style="margin-bottom:44px;margin-top:20px;">
+                    <h1 class="text-center">恒昌技术服务共享中心</h1>
+                </div>
+                <form id="form_login" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3  control-label" for="emp_no">帐号：</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="emp_no" name="emp_no" ng-model="username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3  control-label" for="password">密码：</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="password" type="password" name="password" ng-model="userpwd"/>
+                        </div>
+                    </div>
+                    <div class="form-group hidden">
+                        <span class="col-sm-3  control-label"> </span>
+
+                        <div class="col-sm-9">
+                            <label class="inline pull-left col-3">
+                                <input class="ace" type="checkbox" name="remember" value="1"/>
+                                <span class="lbl"> </span>
+                            </label>
+                            <label for="remember-me">记住我的登录状态</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <input type="button" value="登录" class="btn btn-sm btn-primary col-10" ng-click="submit()">
+                        </div>
+                    </div>
+                </form>
+                <p>
+                    有问题请联系管理员(itmanager@credithc.com)
+                </p>
+                <p>
+                    &nbsp;
+                </p>
+                <p>
+                    &nbsp;
+                </p>
+            </div>
+        </div>
+        <div class="row text-right">
+            <a href="javascript:;">恒昌技术服务共享中心</a>
+        </div>
+    </div>
+</div>
+
+
