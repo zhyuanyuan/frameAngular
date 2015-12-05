@@ -200,6 +200,7 @@ define(["modules/homeModule"], function (homeModule) {
             sortorder: "desc",
             multiselect: true,
             autowidth: true,
+            //loadonce: true,
             width: 1000,
             height: "100%",
             rownumbers:true,
