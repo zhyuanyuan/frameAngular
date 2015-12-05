@@ -94,7 +94,7 @@ define(["config/common/modules"], function (module) {
     }]);
 
 
-    module.factory("gridService", ["ajaxService", function (ajaxService) {
+    module.factory("gridService", ["ajaxService","$filter", function (ajaxService,$filter) {
 
         function Grid(param, element) {
             //数据接口
@@ -125,6 +125,7 @@ define(["config/common/modules"], function (module) {
             this.rownumbers = param.rownumbers;
             this.totalCount = null;//记录总页数
             this.firstSendData = {rows: this.rowNum, page: 1, sidx: this.sortname, sord: this.softorder};
+            this.gridData=null;
             this.init();
         }
 
@@ -145,26 +146,18 @@ define(["config/common/modules"], function (module) {
                     var config = self.commonColModel[index];
                     if (config.sortable) {
                         $(this).on("click", function (ev) {
-
-                           // 排序要本地排序
-
-                           /* self.sortname = config.name;
+                            self.sortname = config.name;
                             arguments.callee["flag" + config.name] = !arguments.callee["flag" + config.name];
                             if (arguments.callee["flag" + config.name]) {
                                 self.softorder = "desc";
                             } else {
                                 self.softorder = "asc";
                             }
-                            self.loadData({
-                                rows: self.element.find("tfoot select.pagesize").val(),
-                                page: self.element.find("tfoot input.page").val(),
-                                sidx: self.sortname,
-                                sord: self.softorder
-                            });*/
-
-
-
-
+                            //实现本地排序
+                            var rowsArr= self.gridData.rows;
+                            rowsArr= $filter("orderBy")(rowsArr,self.sortname,arguments.callee["flag" + config.name]);
+                            self.gridData.rows=rowsArr;
+                            self.operateDom(self.gridData);
                         });
                     }
                 });
@@ -326,12 +319,14 @@ define(["config/common/modules"], function (module) {
                 sendData.ng = new Date().getTime();
                 if (this.mtype && angular.equals(this.mtype.toLowerCase(), "post")) {
                     ajaxService.post(self.url, sendData).then(function (data) {
+                        self.gridData=data;
                         self.operateDom(data);
                     }, function () {
                         throw new Error("请求失败");
                     });
                 } else {
                     ajaxService.get(self.url, sendData).then(function (data) {
+                        self.gridData=data;
                         self.operateDom(data);
                     }, function () {
                         throw new Error("请求失败");
