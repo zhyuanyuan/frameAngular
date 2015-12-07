@@ -145,13 +145,17 @@ define(["config/common/modules"], function (module) {
                 this.element.find("thead tr").last().find("th").each(function (index, item) {
                     var config = self.commonColModel[index];
                     if (config.sortable) {
+                        $(this).append('<span class="glyphicon"></span>');
                         $(this).on("click", function (ev) {
+                            $(this).parent().find("span.glyphicon").removeClass("glyphicon-triangle-top").removeClass("glyphicon-triangle-bottom");
                             self.sortname = config.name;
                             arguments.callee["flag" + config.name] = !arguments.callee["flag" + config.name];
                             if (arguments.callee["flag" + config.name]) {
                                 self.softorder = "desc";
+                                $(this).find("span.glyphicon").addClass("glyphicon-triangle-bottom");
                             } else {
                                 self.softorder = "asc";
+                                $(this).find("span.glyphicon").addClass("glyphicon-triangle-top");
                             }
                             //实现本地排序
                             var rowsArr= self.gridData.rows;
@@ -175,11 +179,11 @@ define(["config/common/modules"], function (module) {
                 }, selectOptions);
 
                 var tfootHtml = '<tr><td colspan="' + this.element.find("thead tr").last().find("th").length + '">\
-                <span class="glyphicon glyphicon-fast-backward" style="cursor: pointer; color: #666;"></span>\
-                <span class="glyphicon glyphicon-step-backward" style="cursor: pointer; color: #666;"></span>\
+                <span class="glyphicon glyphicon-fast-backward hover" style="cursor: pointer; color: #666;"></span>\
+                <span class="glyphicon glyphicon-step-backward hover" style="cursor: pointer; color: #666;"></span>\
                 <input style="width: 50px; text-align: center;" type="text" value="1" class="page">共<span class="total"></span>页\
-                <span class="glyphicon glyphicon-step-forward" style="cursor: pointer; color: #666;"></span>\
-                <span class="glyphicon glyphicon-fast-forward" style="cursor: pointer; color: #666;"></span>\
+                <span class="glyphicon glyphicon-step-forward hover" style="cursor: pointer; color: #666;"></span>\
+                <span class="glyphicon glyphicon-fast-forward hover" style="cursor: pointer; color: #666;"></span>\
                 <span class="glyphicon glyphicon-refresh" style="float: left;margin-top: 4px;cursor: pointer"></span>\
                 <select class="pagesize" style="display: inline-block; width: 50px; height: 26px; vertical-align: middle; padding: 0; border-radius: 0;">' +
                     selectOptions.join("")
@@ -189,7 +193,12 @@ define(["config/common/modules"], function (module) {
             共<span class="allCount"></span>条\
             </div>\
             </td></tr>';
-                this.element.find("tfoot").empty().append(tfootHtml);
+                this.element.find("tfoot").empty().append(tfootHtml).find("span.hover").hover(function () {
+                    $(this).css({color:"#333"});
+                },function(){
+                    $(this).css({color:"#666"});
+                });
+
                 //第一次加数据
                 this.loadData(this.firstSendData);
 
@@ -218,19 +227,17 @@ define(["config/common/modules"], function (module) {
 
                 //刷新数据
                 this.element.find("tfoot span.glyphicon-refresh").on("click", function (ev) {
-                    self.loadData(self.firstSendData);
+                    self.reload();
                 });
 
                 //跳到第一页
                 this.element.find("tfoot").on("click", "span.glyphicon-fast-backward", function (ev) {
-
                     self.loadData({
                         rows: self.element.find("tfoot select.pagesize").val(),
                         page: 1,
                         sidx: self.sortname,
                         sord: self.softorder
                     });
-
                 });
                 //跳到上一页
                 this.element.find("tfoot").on("click", "span.glyphicon-step-backward", function (ev) {
@@ -250,7 +257,7 @@ define(["config/common/modules"], function (module) {
                     nowpage++;
                     if (nowpage > self.totalCount) nowpage = self.totalCount;
                     self.loadData({
-                        rows: element.find("tfoot select.pagesize").val(),
+                        rows: self.element.find("tfoot select.pagesize").val(),
                         page: nowpage,
                         sidx: self.sortname,
                         sord: self.softorder
@@ -290,7 +297,7 @@ define(["config/common/modules"], function (module) {
                     }
                 }
             },
-            filterData: function (rowData, commonColModel) {
+            filterData: function (rowData) {
                 var htmlArr = [], self = this;
                 angular.forEach(rowData, function (item, i) {
                     var rowHtml = [], str;
@@ -343,6 +350,22 @@ define(["config/common/modules"], function (module) {
                     }
                 });
                 return checkVal;
+            },
+            //重新加载数据
+            reload:function(){
+                this.loadData(this.firstSendData);
+                return this;
+            },
+            //加查询条件搜索
+            searchGrid:function(searchData){
+                if(!$.isEmptyObject(searchData)){
+                    var data=this.firstSendData;
+                    angular.forEach(searchData,function(item,index){
+                        this[index] = item;
+                    },data);
+                   this.loadData(data);
+                }
+                return this;
             }
         });
         return function (param, element) {

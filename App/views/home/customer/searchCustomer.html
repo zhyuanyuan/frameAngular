@@ -1,73 +1,48 @@
-<style>
-   /* .updownicon span {
-        display: block;
-        font-size: 12px;
-        color: #666;
-        margin-top: -4px;
-        cursor: pointer;
-    }
-
-    .updownicon span.on,
-    .updownicon span:hover {
-        color: #333;
-    }
-
-    .last-pagelist td {
-        position: relative;
-    }
-
-
-
-    .last-pagelist .glyphicon:hover {
-        color: #333;
-    }
-
-
-
-    .last-pagelist .glyphicon-refresh:hover {
-        color: #1D1D1D;
-    }
-*/
-
-</style>
 <div>
-    <button ng-click="getChecked()">点击</button>
+    <style>
+        .form-inline .form-control{
+            margin-right: 25px;
+        }
+        .form-inline .form-group label{
+            margin-right: 10px;
+        }
+    </style>
+    <form class="form-inline">
+        <div class="form-group">
+            <label class="sr-only" for="exampleInputText">输入查询条件</label>
+            <input type="text" class="form-control" id="exampleInputText" placeholder="输入查询条件">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputId">客户id</label>
+            <input type="text" class="form-control" id="exampleInputId" placeholder="客户id">
+        </div>
+        <div class="radio-box in-block">
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="1"> 客户状态1
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="0"> 客户状态2
+            </label>
+        </div>
+        <button type="submit" class="btn btn-warning" style="margin-left: 10px;">查询</button>
+    </form>
     <table id="checkgrid" class="table table-bordered table-hover table-striped text-center">
         <thead>
         <tr>
-            <th>Inv No</th>
-            <th>Date</th>
-            <th>Client</th>
-            <th>Amount</th>
-            <th>Tax</th>
-            <th>Total</th>
-            <th>Notes</th>
+            <th style="width: 100px;">
+                Inv No
+            </th>
+            <th style="width: 80px">Date</th>
+            <th style="width: 200px;">Client</th>
+            <th style="width: 500px">Amount</th>
+            <th style="width: 100px">Tax</th>
+            <th style="width: 100px;">Total</th>
+            <th style="width: 200px;">Notes</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody></tbody>
-        <tfoot>
-       <!-- <tr>
-            <td colspan="8">
-                <span class="glyphicon glyphicon-fast-backward" style="cursor: pointer; color: #666;"></span>
-                <span class="glyphicon glyphicon-step-backward" style="cursor: pointer; color: #666;"></span>
-                <input style="width: 40px; text-align: center;" type="text">共<span>2</span>页
-                <span class="glyphicon glyphicon-step-forward" style="cursor: pointer; color: #666;"></span>
-                <span class="glyphicon glyphicon-fast-forward" style="cursor: pointer; color: #666;"></span>
-                <span class="glyphicon glyphicon-refresh" style="float: left;margin-top: 4px;"></span>
-                <select style="display: inline-block; width: 50px; height: 26px; vertical-align: middle; padding: 0; border-radius: 0;">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-                <div style="float: right;margin-top: 4px;">
-                    <span>1</span>-<span>11</span>
-                    共<span>130</span>条
-                </div>
-            </td>
-        </tr>-->
-        </tfoot>
+        <tfoot></tfoot>
     </table>
+
 </div>

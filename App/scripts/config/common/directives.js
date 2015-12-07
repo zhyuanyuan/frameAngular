@@ -52,24 +52,6 @@ define(["config/common/modules"], function (modules) {
             }
         }
     });
-
-   modules.directive("setTable", ["gridService", function (gridService) {
-        return {
-            restrict: "A",
-            replace: false,
-            scope: {
-                tableParam: "="
-            },
-            link: function (scope, element, attr, controller) {
-                var param = scope.tableParam;
-                var val=gridService(param, $(element));
-                val.getSelectIds();
-                //gridService.getSelect();
-            }
-
-        }
-    }]);
-
 });
 
 

@@ -361,6 +361,7 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-datepicker select.ui-datepicker-month,
 .ui-datepicker select.ui-datepicker-year {
+	color: black;
 	width: 42%;
 }
 .ui-datepicker table {

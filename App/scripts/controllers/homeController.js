@@ -221,7 +221,7 @@ define(["modules/homeModule"], function (homeModule) {
                 {name: 'amount',sortable:true},
                 {name: 'tax'},
                 {name: 'total',sortable:true},
-                {name: 'note', align:"right", sortable: false},
+                {name: 'note', align:"right", sortable: true},
                 {name:"button",algin:"center",formatter:function(cellval,rowObj){
                     var id=rowObj.id;
                     return "<a ng-click='update(\""+id+"\")'>修改</a>、<a ng-click='delete(\""+id+"\")'>修改</a>、<a ng-click='detail(\""+id+"\")'>修改</a>、<a ng-click='serviceConfig(\""+id+"\")'>修改</a>";
@@ -229,11 +229,11 @@ define(["modules/homeModule"], function (homeModule) {
             ],
             rowNum:10,
             rowList:[10,20,50,100],
-         /*   sortname:"id",
+            sortname:"id",
             softorder:"desc",
             mtype:"get",
             rownumbers:true,
-            multiselect:true,*/
+            multiselect:true,
             gridComplete:function($table,data){
                 $compile($table.find("a"))($scope);
             }
@@ -243,6 +243,12 @@ define(["modules/homeModule"], function (homeModule) {
         $scope.getChecked= function () {
           var ids=  grid.getSelectIds();
             console.log(ids);
+        };
+
+        $scope.gridSearch=function(){
+            var invNo=$scope.invNo,searchTime=$scope.searchTime;
+            var gg=grid.searchGrid({inv:invNo,searchTime:searchTime});
+            console.log(gg);
         };
 
         $scope.update= function (id) {
@@ -257,8 +263,6 @@ define(["modules/homeModule"], function (homeModule) {
         $scope.serviceConfig= function (id) {
             console.log(id);
         };
-
-
 
     }]);
 });
